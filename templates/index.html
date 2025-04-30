@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Creator</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2rem; }
+        label { display: block; margin: 0.5rem 0; }
+        input { padding: 0.5rem; width: 100%; max-width: 300px; }
+        button { padding: 0.5rem 1rem; margin-top: 1rem; }
+        .message { margin: 1rem 0; font-weight: bold; }
+        .error { color: red; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+    <h1>Automated Account Creator</h1>
+    {% if error %}
+        <div class="message error">{{ error }}</div>
+    {% endif %}
+    {% if success %}
+        <div class="message success">{{ success }}</div>
+    {% endif %}
+    <form method="post">
+        <label>
+            Base Username:
+            <input type="text" name="base_username" required>
+        </label>
+        <label>
+            Password:
+            <input type="password" name="password" required>
+        </label>
+        <label>
+            Number of Accounts:
+            <input type="number" name="count" min="1" required>
+        </label>
+        <label>
+            Custom Phone (10 digits, optional):
+            <input type="text" name="phone" pattern="\d{10}">
+        </label>
+        <button type="submit">Start Creation</button>
+    </form>
+</body>
+</html>
